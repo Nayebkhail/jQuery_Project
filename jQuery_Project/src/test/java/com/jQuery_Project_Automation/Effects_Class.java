@@ -26,7 +26,8 @@ public class Effects_Class {
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 	}
-
+	
+	// only for practice perpuse 
 	@Test
 	public void effect_sideMenu() {
 
