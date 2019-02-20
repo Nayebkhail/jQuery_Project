@@ -14,8 +14,10 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +44,7 @@ public class GlobalSeleniumLibrary {
 	final static Logger logger = Logger.getLogger(GlobalSeleniumLibrary.class);
 	private WebDriver driver;
 	private boolean isDemo = false;
+	private boolean acceptNextAlert = true;
 
 	public boolean getDemo() {
 		return isDemo;
@@ -459,8 +462,7 @@ public class GlobalSeleniumLibrary {
 
 	public WebDriver startChromeBrowser1() {
 		try {
-			System.setProperty("webdriver.chrome.driver",
-					"C:\\Users\\aboba\\eclipse-workspace\\Week6_United_Automation\\src\\test\\resources\\Browers\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","src\\test\\resources\\Browsers\\chromedriver.exe");
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -505,5 +507,36 @@ public class GlobalSeleniumLibrary {
 			assertTrue(false);
 		}
 	}
+	 private boolean isElementPresent(By by) {
+		    try {
+		      driver.findElement(by);
+		      return true;
+		    } catch (NoSuchElementException e) {
+		      return false;
+		    }
+		  }
 
+		  private boolean isAlertPresent() {
+		    try {
+		      driver.switchTo().alert();
+		      return true;
+		    } catch (NoAlertPresentException e) {
+		      return false;
+		    }
+		  }
+
+		  private String closeAlertAndGetItsText() {
+		    try {
+		      Alert alert = driver.switchTo().alert();
+		      String alertText = alert.getText();
+		      if (acceptNextAlert) {
+		        alert.accept();
+		      } else {
+		        alert.dismiss();
+		      }
+		      return alertText;
+		    } finally {
+		      acceptNextAlert = true;
+		    }
+		  }
 }

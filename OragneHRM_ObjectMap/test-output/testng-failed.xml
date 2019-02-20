@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.OrangeHRM.ObjectMapProject.OrangeHRM_ObjectMapLogin">
+      <class name="com.OrangeHRM.ObjectMapProject.UntitledTestCase">
         <methods>
           <include name="beforeAllTestStart"/>
           <include name="beforeEachTestStart"/>
+          <include name="testUntitledTestCase"/>
           <include name="afterEachTestEnd"/>
           <include name="afterAllTestCompleted"/>
-          <include name="OrangeHRM_Login"/>
         </methods>
-      </class> <!-- com.OrangeHRM.ObjectMapProject.OrangeHRM_ObjectMapLogin -->
+      </class> <!-- com.OrangeHRM.ObjectMapProject.UntitledTestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

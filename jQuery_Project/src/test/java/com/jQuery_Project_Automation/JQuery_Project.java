@@ -39,8 +39,7 @@ public class JQuery_Project {
 	@BeforeMethod(enabled = false)
 	public void beforMethod() {
 
-		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\aboba\\eclipse-workspace\\jQuery_Project\\jQuery_Project\\src\\test\\resources\\Browser_Drivers\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","src\\test\\resources\\Browser_Drivers\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		driver.manage().window().maximize();
@@ -86,7 +85,6 @@ public class JQuery_Project {
 			driver.get("https://jqueryui.com/resizable/");
 			driver.switchTo().frame(0);
 			Actions action4 = new Actions(driver);
-
 			WebElement resiable = driver.findElement(By.xpath("//*[@id=\"resizable\"]/div[2]"));
 			WebElement handleresiable = driver.findElement(By.xpath("//*[@id=\"resizable\"]/div[3]"));
 			action4.dragAndDrop(resiable, handleresiable).perform();
